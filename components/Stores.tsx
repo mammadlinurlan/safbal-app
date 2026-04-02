@@ -1,8 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useKeenSlider } from "keen-slider/react";
-import "keen-slider/keen-slider.min.css";
 
 const stores = [
   { name: "Araz", logo: "/stores/araz.png" },
@@ -16,35 +14,7 @@ const stores = [
   { name: "Tam Store", logo: "/stores/tamstore.png" },
 ];
 
-// 4x duplicate to always have enough slides for seamless loop
-const slides = [...stores, ...stores, ...stores, ...stores];
-
-const SPEED_PER_SLIDE = 2200; // ms per slide
-
 export default function Stores() {
-  const [sliderRef] = useKeenSlider<HTMLDivElement>({
-    loop: true,
-    renderMode: "performance",
-    drag: false,
-    slides: {
-      perView: "auto",
-      spacing: 24,
-    },
-    
-    created(s) {
-      s.moveToIdx(stores.length, true, {
-        duration: stores.length * SPEED_PER_SLIDE,
-        easing: (t) => t,
-      });
-    },
-    animationEnded(s) {
-      s.moveToIdx(s.track.details.abs + stores.length, true, {
-        duration: stores.length * SPEED_PER_SLIDE,
-        easing: (t) => t,
-      });
-    },
-  });
-
   return (
     <section className="py-20 bg-[#FFFDF7] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
@@ -71,24 +41,43 @@ export default function Stores() {
           style={{ background: "linear-gradient(to left, #FFFDF7, transparent)" }}
         />
 
-        <div ref={sliderRef} className="keen-slider">
-          {slides.map((store, i) => (
+        <div className="flex overflow-hidden">
+          {[0, 1].map((copy) => (
             <div
-              key={`${store.name}-${i}`}
-              className="keen-slider__slide flex items-center justify-center bg-white rounded-2xl border border-black/5 group"
-              style={{ minWidth: "176px", maxWidth: "176px", height: "96px" }}
+              key={copy}
+              aria-hidden={copy === 1}
+              className="flex gap-6 shrink-0"
+              style={{
+                animation: "stores-marquee 22s linear infinite",
+                willChange: "transform",
+              }}
             >
-              <Image
-                src={store.logo}
-                alt={store.name}
-                width={140}
-                height={60}
-                className="object-contain max-w-full max-h-full  opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
-              />
+              {stores.map((store) => (
+                <div
+                  key={store.name}
+                  className="flex items-center justify-center bg-white rounded-2xl border border-black/5 group hover:border-honey/30 hover:shadow-md transition-all duration-300"
+                  style={{ minWidth: "176px", width: "176px", height: "96px" }}
+                >
+                  <Image
+                    src={store.logo}
+                    alt={store.name}
+                    width={140}
+                    height={60}
+                    className="object-contain max-w-full max-h-full  opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                  />
+                </div>
+              ))}
             </div>
           ))}
         </div>
       </div>
+
+      <style>{`
+        @keyframes stores-marquee {
+          from { transform: translateX(0); }
+          to   { transform: translateX(calc(-100% - 24px)); }
+        }
+      `}</style>
     </section>
   );
 }
