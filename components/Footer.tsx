@@ -23,7 +23,7 @@ export default function Footer() {
               className="h-14 w-auto mb-4"
             />
             <p className="text-white/50 text-sm leading-relaxed">
-              Azərbaycanın ən təbii bal istehsalçısı. 10 ildən artıq təcrübə ilə xidmətinizdəyik.
+              Azərbaycanın ən təbii bal istehsalçısı. 50 ildən artıq təcrübə ilə xidmətinizdəyik.
             </p>
           </motion.div>
 
