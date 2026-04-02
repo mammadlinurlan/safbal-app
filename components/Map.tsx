@@ -75,7 +75,7 @@ export default function Map() {
           `<div style="font-family:'Nunito',sans-serif;padding:4px 2px;min-width:150px">
             <strong style="color:#1A1A1A;font-size:14px">🍯 Saf Bal</strong><br/>
             <span style="color:#888;font-size:12px">Bakı, Azərbaycan</span><br/>
-            <a href="tel:+994503233747" style="color:#F5A623;font-size:12px;text-decoration:none;margin-top:4px;display:block">+994 50 323 37 47</a>
+            <a href="tel:+994503686882" style="color:#F5A623;font-size:12px;text-decoration:none;margin-top:4px;display:block">+994 50 368 68 82</a>
           </div>`,
           { maxWidth: 200 }
         )

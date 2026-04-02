@@ -58,10 +58,10 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="tel:+994503233747"
+              href="tel:+994503686882"
               className="ml-4 px-5 py-2.5 bg-honey text-dark font-semibold text-sm rounded-full hover:bg-honey-light transition-all duration-300 hover:scale-105 shadow-lg shadow-honey/20"
             >
-              +994 50 323 37 47
+              +994 50 368 68 82
             </a>
           </div>
 
@@ -111,10 +111,10 @@ export default function Navbar() {
                 </a>
               ))}
               <a
-                href="tel:+994503233747"
+                href="tel:+994503686882"
                 className="mt-2 px-5 py-3 bg-honey text-dark font-semibold text-sm rounded-full text-center hover:bg-honey-light transition-all duration-300"
               >
-                +994 50 323 37 47
+                +994 50 368 68 82
               </a>
             </div>
           </motion.div>
